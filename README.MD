@@ -29,3 +29,14 @@
       
     # Example:
 		2017-01-01 23:57:23.715|192.168.92.194|"GET / HTTP/1.1"|200|"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"
+		
+  ## Deliverables
+	
+	#  (1) Java program that can be run from command line
+		An executable jar is provided on the bin folder with a sample application.properties and logFile
+	
+	#  (2) Source Code for the Java program
+		Maven project included
+		
+	# (3) MySQL schema used for the log data and (4) SQL queries for SQL test:
+		queries and schemas included on 'SQLQueries' folder
