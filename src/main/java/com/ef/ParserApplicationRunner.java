@@ -28,8 +28,6 @@ public class ParserApplicationRunner implements ApplicationRunner {
 	final Logger logger = LogManager.getLogger("RequiredMessages");
 
 	@Autowired
-	private AccessLogParser accessLogParser;
-	@Autowired
 	private AccessLogService accessLogService;
 	@Autowired
 	private BlockedIpAddressService blockedIpAddressService;
@@ -72,8 +70,8 @@ public class ParserApplicationRunner implements ApplicationRunner {
 	private void tryLoadLogEntriesToMySql() {
 		try (final InputStream inputStream = getLogFileAsStream()) {
 			if (inputStream != null) {
-				logger.info("access.log found on claspath, access logs will be parsed...");
-				final List<AccessLog> logs = accessLogParser.parse(inputStream);
+				logger.info("accesslog file found. access logs will be parsed...");
+				final List<AccessLog> logs = AccessLogParser.parse(inputStream);
 				logger.info(String.format("Found %d log entries... loading entries to MySql..", logs.size()));
 				accessLogService.save(logs);
 				logger.info("Entries successfully loaded to MySql. Proceding to request threshold test...");
@@ -81,7 +79,7 @@ public class ParserApplicationRunner implements ApplicationRunner {
 			}
 		} catch (final IOException e) {
 		}
-		logger.info("No access.log could be read from claspath. Proceding to request threshold test...");
+		logger.info("No accesslog could be read. Proceding to request threshold test...");
 	}
 
 	private InputStream getLogFileAsStream() throws FileNotFoundException {

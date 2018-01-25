@@ -8,11 +8,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.stereotype.Component;
-
 import com.ef.model.AccessLog;
 
-@Component
 public class AccessLogParser {
 
 	// 2017-01-01 00:00:11.763|192.168.234.82|"GET / HTTP/1.1"|200|"swcd (unknown
@@ -22,18 +19,18 @@ public class AccessLogParser {
 
 	private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
 
-	public List<AccessLog> parse(final InputStream inputStream) {
+	public static List<AccessLog> parse(final InputStream inputStream) {
 		return parse(new BufferedReader(new InputStreamReader(inputStream)));
 	}
 
-	public List<AccessLog> parse(final BufferedReader reader) {
+	public static List<AccessLog> parse(final BufferedReader reader) {
 		return reader.lines()
 				.parallel()
 				.map(line -> parseLine(line))
 				.collect(Collectors.toList());
 	}
 
-	private AccessLog parseLine(final String line) {
+	private static AccessLog parseLine(final String line) {
 		final String[] splitted = line.split(SEPARATOR);
 		return new AccessLog(
 				LocalDateTime.parse(splitted[0], dateTimeFormatter),
