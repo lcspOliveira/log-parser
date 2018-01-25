@@ -33,9 +33,11 @@
   ## Deliverables
 	
 	#  (1) Java program that can be run from command line
-		An executable jar is provided on the bin folder with a sample application.properties and logFile
+	
+		Executable jar included on the bin folder with a sample application.properties and logFile (tested on Java HotSpot(TM) 64-Bit VM,version "1.8.0_161" running on Windows 7 Ultimate)
 	
 	#  (2) Source Code for the Java program
+	
 		Maven project included
 		
 	# (3) MySQL schema used for the log data and (4) SQL queries for SQL test:
