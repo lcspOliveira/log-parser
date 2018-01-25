@@ -11,7 +11,7 @@
     The tool takes "logfile", "startDate", "duration" and "threshold" as command line arguments. "logfile" is the path to the file containing the logs, "startDate" is of "yyyy-MM-dd.HH:mm:ss" format, "duration" can take only "hourly", "daily" as inputs and "threshold" can be an integer.
 	An application.properties file should be provided on the same folder with the required parameters to access an MySQL database (url, username and password).
 	
-	Once the application is started it will load all the access logs contained in the provided file to MySQL. Then check for the IP addresses that exceded the request limit, print the addresses on the console and load them to the blocked addresses table.
+	Once the application is started it will automatically create the MySQL schemas and load all the access logs contained in the provided file to it. Then check for the IP addresses that exceded the request limit, print the addresses on the console and load them to the blocked addresses table.
     
     # Usage example : 
       
